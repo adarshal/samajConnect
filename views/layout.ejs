@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/layout.css">
+      
+    <%- style %>    
+    <!-- to tell that body of file that uses this layout may contain style link add that here  -->
+       <!-- to include this stylesheet link and script link need to iuse <%- style %> & <% script %> in layout  -->
+</head>
+
+<body>
+    <%- include('_header'); %>
+        gfdgdf
+        <%- body %>
+
+
+            <%- include('_footer'); %>
+            
+
+            <%- script %> 
+    <!-- to tell that body of file that uses this layout may contain style link add that here  -->
+</body>
+
+</html>
