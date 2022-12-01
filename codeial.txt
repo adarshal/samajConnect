@@ -47,4 +47,10 @@ see monogose ,routers ,views and others code and folder structure in contactsApp
 ---
 30 nov adding partials using include keyword(for header footr) 
 then installing layouts cmd used > npm install express-ejs-layouts
+//using layouts !! it should be before routes
+const expressLayout=require('express-ejs-layouts');
+app.use(expressLayout);
+
+---
+
 

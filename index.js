@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+// connect to db
+const db=require('./config/mongoose');
+
 //using layouts !! it should be before routes
 const expressLayout = require('express-ejs-layouts');
 app.use(expressLayout);
