@@ -21,19 +21,33 @@ module.exports.signin=function(req,res){
 
 const User = require('../models/users');
 module.exports.createAccount=function(req,res){
-       
-    User.create({
-        email: req.body.email,
-        password: req.body.password,
-        name: req.body.accountHolder
-    }, function (err, newUser) {
-        if (err) {
-            console.log('Error in creating User ', err);
-            return;
+      if(req.body.password != req.body.confirmPassword){
+           return res.redirect('back');
         }
-       
-        return res.redirect('back');
 
-    })
+        User.findOne({email: req.body.email}, function (err,user){
+            if(err){ console.log('Error in finding email on signup page'); return}
+            if(!user){
+
+                User.create(
+                    req.body
+                    //old method used instead of directly using req.body
+                    // {
+                    // email: req.body.email,
+                    // password: req.body.password,
+                    // name: req.body.accountHolder
+                    // }
+                , function (err, newUser) {
+                    if (err) {console.log('Error in creating User ', err); return;}
+                     
+                    return res.redirect('/signin');
+                            })
+
+            }else{
+                console.log('Error email id is already in use');
+                return res.redirect('back');
+            }
+        })
+   
 }
 

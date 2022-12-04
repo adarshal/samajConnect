@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
             },
-    name:{
+     accountHolder:{
         type:String,
         required: true
     }
