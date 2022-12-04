@@ -1,0 +1,2 @@
+
+create folder > index .js > npm init > install express > npm install ejs > npm install mongoose

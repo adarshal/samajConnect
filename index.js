@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+const cookieParser=require('cookie-parser');
+
 // connect to db
 const db=require('./config/mongoose');
 
@@ -16,6 +18,8 @@ app.set('layout extractScripts', true);
 // static files access 
 app.use(express.static('assets'));
 
+app.use(express.urlencoded());  // need for parsing it is middleware
+app.use(cookieParser()); 
 
 //uses router
 app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it

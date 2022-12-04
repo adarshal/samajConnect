@@ -3,3 +3,37 @@ module.exports.profile = function(req, res){
         title : 'profile'
     })
 }
+
+module.exports.signup=function(req,res){
+    // res.end('<h1>Express up for codeial from controller ');
+
+   return res.render('signup',{
+        title : 'Sign Up to codeial'
+    })
+}
+module.exports.signin=function(req,res){
+    // res.end('<h1>Express up for codeial from controller ');
+
+   return res.render('signin',{
+        title : 'Login to codeial'
+    })
+}
+
+const User = require('../models/users');
+module.exports.createAccount=function(req,res){
+       
+    User.create({
+        email: req.body.email,
+        password: req.body.password,
+        name: req.body.accountHolder
+    }, function (err, newUser) {
+        if (err) {
+            console.log('Error in creating User ', err);
+            return;
+        }
+       
+        return res.redirect('back');
+
+    })
+}
+
