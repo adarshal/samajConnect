@@ -18,3 +18,11 @@ npm install passport-local
 create passport-local-stratergy.js
 
 install express-session 
+
+in passport local created check auth and set suth methods to use it as miidleware
+in users profile route added checkAuth middlware from passport local so only signd in in pepl can see profile
+for signup and ssign pagwes added is Ath method so will redirect to profile if already signed in
+
+npm install connect-mongo // because whenever we reastrt server user need to re login
+uninstalled  vers4 npm uninstall connect-mongo 
+installed ver 3 (unable to handle promise error, new ver dont require sesion as input but unable to und to create new mongoStore function)

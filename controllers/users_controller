@@ -8,6 +8,10 @@ module.exports.profile = function(req, res){
 
 //signup page
 module.exports.signup=function(req,res){
+
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
      return res.render('signup',{
         title : 'Sign Up to codeial'
     })
@@ -15,6 +19,9 @@ module.exports.signup=function(req,res){
 
 //sign in page
 module.exports.signin=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
        return res.render('signin',{
         title : 'Login to codeial'
     })
@@ -55,14 +62,17 @@ module.exports.createAccount=function(req,res){
 
 // signin Auth process creates session
 module.exports.loginCreateSession=function(req,res){
-    return res.redirect('/');
+    return res.redirect('/users/profile');
 }
 
 
 
-// signout process
+// signout process | destroy session
 module.exports.signout=function(req,res){
-    res.clearCookie('user_id');
-   
-    return res.redirect('/signin');
- }
+    // res.clearCookie('user_id'); // old manual method not used
+    req.logout(function(err) { // function by passport
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
+      }
+      

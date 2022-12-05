@@ -11,6 +11,8 @@ const db=require('./config/mongoose');
 const session= require('express-session');
 const passport = require('passport');
 const passportLocal= require('./config/passport-local-stratergy');
+const MongoStore=require('connect-mongo')(session); //new mongostore dont require input session so downgraded from version 4 to 3
+
 
 //using layouts !! it should be before routes
 const expressLayout = require('express-ejs-layouts');
@@ -32,19 +34,33 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 
-app.use(session({
+//mongo store is used store cookie in db
+app.use(session(
+    {
+    name: 'codeial',
+    //TODO change secret before deploy in prod
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { 
         maxAge: (1000 * 60 * 100) // it stores in ms this is 1000 min.
+     },
+     store: new MongoStore(
+        {
+            mongooseConnection: db,
+            autoRemove: 'disabled'
+        
+        },
+        function(err){
+            console.log(err ||  'connect-mongodb setup ok');
+        }
+    )
+}));
 
-     }
-  }))
 
 app.use(passport.initialize());
 app.use(passport.session()); // paspport also have session function
-
+app.use(passport.setAuthenticatedUser) // checks whether session cookies present
 
 //uses router this router need to be used after passport so rotes can use paaport
 app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it
