@@ -1,16 +1,33 @@
+const User = require('../models/users');
+
 module.exports.profile = function(req, res){
-    return res.render('user_profile',{
-        title : 'profile'
-    })
+    if (req.cookies.user_id){
+        User.findById(req.cookies.user_id, function(err, user){
+            if (user){
+                return res.render('user_profile', {
+                    title: "User Profile",
+                    user: user
+                })
+            }else{
+                //sigin req
+                return res.redirect('/signin');
+
+            }
+        });
+    }else{
+        return res.redirect('/signin');
+
+    }
 }
 
+// signup page
 module.exports.signup=function(req,res){
-    // res.end('<h1>Express up for codeial from controller ');
-
+   
    return res.render('signup',{
         title : 'Sign Up to codeial'
     })
 }
+// signin page
 module.exports.signin=function(req,res){
     // res.end('<h1>Express up for codeial from controller ');
 
@@ -19,12 +36,14 @@ module.exports.signin=function(req,res){
     })
 }
 
-const User = require('../models/users');
+
+// signup of user
 module.exports.createAccount=function(req,res){
+    //if password and conf-password dont match
       if(req.body.password != req.body.confirmPassword){
            return res.redirect('back');
         }
-
+        // to find if password is already in use or not
         User.findOne({email: req.body.email}, function (err,user){
             if(err){ console.log('Error in finding email on signup page'); return}
             if(!user){
@@ -51,3 +70,35 @@ module.exports.createAccount=function(req,res){
    
 }
 
+// signin Auth process creates session
+module.exports.loginCreateSession=function(req,res){
+
+    User.findOne({email: req.body.email}, function (err,user){
+        if(err){ console.log('Error in finding email on signin page'); return}
+        //handle user found
+        if(user){
+            // handle opassword wrong
+            if(user.password !== req.body.password){
+                return res.redirect('back');
+            }
+            // handle password correct
+            else{
+                
+                res.cookie('user_id', user.id)
+                return res.redirect('/users/profile');
+            }
+        }
+        //handle user not found
+        else{
+            return res.redirect('back');
+        }
+    })
+}
+
+
+// signout process
+module.exports.signout=function(req,res){
+    res.clearCookie('user_id');
+   
+    return res.redirect('/signin');
+ }

@@ -12,7 +12,8 @@ router.get('/',homeController.home);
 router.get('/signup',userController.signup);
 router.post('/create-account',userController.createAccount);
 router.get('/signin',userController.signin);
-router.post('/signin-account',userController.signin);
+router.post('/signin-account',userController.loginCreateSession);
+router.get('/signout',userController.signout);
 
 // function(req,res){
 
