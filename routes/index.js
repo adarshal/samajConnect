@@ -5,14 +5,21 @@ const User = require('../models/users');
 
 
 const homeController=require('../controllers/home_controller');
-const userController=require('../controllers/users_controller');
-const signUpController=require('../controllers/signup_controller');
+// const userController=require('../controllers/users_controller');
+// const signUpController=require('../controllers/signup_controller');
 
 router.get('/',homeController.home);
-router.get('/signup',userController.signup);
-router.post('/create-account',userController.createAccount);
-router.get('/signin',userController.signin);
-router.post('/signin-account',userController.signin);
+
+
+router.use('/users', require('./users'));
+router.post('/posts', require('./posts'));
+
+// moved to users
+// router.get('/signup',userController.signup);
+// router.post('/create-account',userController.createAccount);
+// router.get('/signin',userController.signin);
+// router.post('/signin-account',userController.loginCreateSession);
+// router.get('/signout',userController.signout);
 
 // function(req,res){
 
@@ -34,7 +41,5 @@ router.post('/signin-account',userController.signin);
 // } );
 
 
-router.use('/users', require('./users'));
-router.post('/posts', require('./posts'));
 
 module.exports= router;

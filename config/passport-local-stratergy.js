@@ -6,16 +6,25 @@ const User = require('../models/users');
 //Authenthication using passport.js
 passport.use(new LocalStrategy(
     {
-        usernameField: email // need to additn to code on passport.js local as we need to tell them email is used as usernmfld;
+        usernameField: 'email' // need to additn to code on passport.js local as we need to tell them email is used as usernmfld;
     },
     function (email, password, done) {
         //find user and establish identity
+        // find a user and establish the identity
         User.findOne({ email: email }, function (err, user) {
-            if (err) { console.log('error in finding email --->passport'); return done(err); }
-            if (!user) { return done(null, false); }
-            if (!email.verifyPassword(password)) { console.log('wrong password'); return done(null, false); }
-            return done(null, email);
+            if (err) {
+                console.log('Error in finding user --> Passport');
+                return done(err);
+            }
+
+            if (!user || user.password != password) {
+                console.log('Invalid Username/Password');
+                return done(null, false);
+            }
+
+            return done(null, user);
         });
+
     }
 ));
 

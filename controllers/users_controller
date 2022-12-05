@@ -6,17 +6,16 @@ module.exports.profile = function(req, res){
     })
 }
 
+//signup page
 module.exports.signup=function(req,res){
-    // res.end('<h1>Express up for codeial from controller ');
-
-   return res.render('signup',{
+     return res.render('signup',{
         title : 'Sign Up to codeial'
     })
 }
-module.exports.signin=function(req,res){
-    // res.end('<h1>Express up for codeial from controller ');
 
-   return res.render('signin',{
+//sign in page
+module.exports.signin=function(req,res){
+       return res.render('signin',{
         title : 'Login to codeial'
     })
 }
@@ -42,7 +41,7 @@ module.exports.createAccount=function(req,res){
                 , function (err, newUser) {
                     if (err) {console.log('Error in creating User ', err); return;}
                      
-                    return res.redirect('/signin');
+                    return res.redirect('/users/signin');
                             })
 
             }else{
@@ -53,3 +52,17 @@ module.exports.createAccount=function(req,res){
    
 }
 
+
+// signin Auth process creates session
+module.exports.loginCreateSession=function(req,res){
+    return res.redirect('/');
+}
+
+
+
+// signout process
+module.exports.signout=function(req,res){
+    res.clearCookie('user_id');
+   
+    return res.redirect('/signin');
+ }

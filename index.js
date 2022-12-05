@@ -26,8 +26,6 @@ app.use(express.static('assets'));
 app.use(express.urlencoded());  // need for parsing it is middleware
 app.use(cookieParser()); 
 
-//uses router
-app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it
 
 //ejs set up view engine 
 app.set('view engine', 'ejs');
@@ -46,6 +44,10 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session()); // paspport also have session function
+
+
+//uses router this router need to be used after passport so rotes can use paaport
+app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it
 
 
 app.listen(port, function (err) {
