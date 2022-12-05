@@ -1,2 +1,20 @@
 
 create folder > index .js > npm init > install express > npm install ejs > npm install mongoose
+
+and other steps created signin & signup pages til 5dec
+then 5dec-
+* npm install cookie-parser
+* then to use it index.js -> const cookieParser=require('cookie-parser'); then ap use it,
+
+now git add .  & commited  git
+git push origin master => to github
+crearte branch manual-local-auth-> git checkout -b manual-local-auth =>this is for learning manual authorization later will use passport
+modified profile controoler from user controller to check cookiw present or not or redirect signin
+added signou funct
+
+git checkout master> to use passport.js for auth
+npm install passport
+npm install passport-local
+create passport-local-stratergy.js
+
+install express-session

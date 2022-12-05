@@ -7,6 +7,11 @@ const cookieParser=require('cookie-parser');
 // connect to db
 const db=require('./config/mongoose');
 
+// used for session cookie
+const session= require('express-session');
+const passport = require('passport');
+const passportLocal= require('./config/passport-local-stratergy');
+
 //using layouts !! it should be before routes
 const expressLayout = require('express-ejs-layouts');
 app.use(expressLayout);
@@ -24,9 +29,24 @@ app.use(cookieParser());
 //uses router
 app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it
 
-//ejs
+//ejs set up view engine 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        maxAge: (1000 * 60 * 100) // it stores in ms this is 1000 min.
+
+     }
+  }))
+
+app.use(passport.initialize());
+app.use(passport.session()); // paspport also have session function
+
 
 app.listen(port, function (err) {
     if (err) {
