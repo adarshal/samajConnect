@@ -12,7 +12,7 @@ router.get('/',homeController.home);
 
 
 router.use('/users', require('./users'));
-router.post('/posts', require('./posts'));
+router.use('/posts', require('./posts'));
 
 // moved to users
 // router.get('/signup',userController.signup);
