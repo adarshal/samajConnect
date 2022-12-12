@@ -26,3 +26,5 @@ for signup and ssign pagwes added is Ath method so will redirect to profile if a
 npm install connect-mongo // because whenever we reastrt server user need to re login
 uninstalled  vers4 npm uninstall connect-mongo 
 installed ver 3 (unable to handle promise error, new ver dont require sesion as input but unable to und to create new mongoStore function)
+
+for scss npm install node-sass-middleware

@@ -1,0 +1,40 @@
+header{
+  background-color: #344D67;
+  color: azure;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+header div{
+  display: inline-block;
+}
+#head-container{
+  display:flex;
+  gap: 2em;
+}
+#head-logo{
+  margin-right: auto;
+  /* text-align: left; */
+  
+  font-weight: bolder;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+ul{
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  padding-right: 0.5rem;
+  /* position: fixed; */
+  
+}
+
+.header-li{
+  
+      display: inline-block;
+      list-style: none;
+      color: azure;
+          }
+.header-li a{
+  color: azure;
+  text-decoration: none;
+}
+

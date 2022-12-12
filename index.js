@@ -12,7 +12,7 @@ const session= require('express-session');
 const passport = require('passport');
 const passportLocal= require('./config/passport-local-stratergy');
 const MongoStore=require('connect-mongo')(session); //new mongostore dont require input session so downgraded from version 4 to 3
-
+const sassMiddleware = require('node-sass-middleware');
 
 //using layouts !! it should be before routes
 const expressLayout = require('express-ejs-layouts');
@@ -24,6 +24,17 @@ app.set('layout extractScripts', true);
 
 // static files access 
 app.use(express.static('assets'));
+
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+     dest: './assets/css',
+     debug: true, // we want to show error on terminal /for prod turn this off
+     outputStyle: 'extended', //want sigle lines seperated
+     prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+ 
+}))
+
 
 app.use(express.urlencoded());  // need for parsing it is middleware
 app.use(cookieParser()); 

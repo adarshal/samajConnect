@@ -1,4 +1,7 @@
-body {
-    text-align: center;
-    background: cornsilk;
+body{
+  margin: 0;
+  background-color: #6ECCAF;
 }
+#layout-main {
+   
+    height: 100vh;}
