@@ -1,0 +1,32 @@
+const Comment = require('../models/comment');
+const Post = require('../models/post');
+
+
+module.exports.create = function(req, res){
+    console.log(req.body.post+"dff");
+    Post.findById(req.body.post, function(err,post){
+            if(post){
+                Comment.create({
+                    content: req.body.content,
+                    user: req.user._id,
+                    post: req.body.post
+                } ,function(err,comment){
+                    if(err){
+                        console.log('Error in posting comment');
+                        return;
+                    }
+                    post.comments.push(comment);
+                    post.save();
+                     res.redirect('/');
+                })
+            }
+
+            if(err){
+                console.log("err in find post");
+                return;
+            }
+
+
+    });
+
+}

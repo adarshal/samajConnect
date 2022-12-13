@@ -7,7 +7,7 @@
             <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
             <input type="submit" value="Post">
         </form>
-
+        <% if(locals.user){ %>
         <div id="posts-list-container">
             <ul>
                 <% for(post of posts){ %>
@@ -20,11 +20,34 @@
                          By   <%= post.user.accountHolder %>
                         </small>
                     </p>
+                    <div class="post-comments" >
+                            <form action="/comments/create" method="POST">
+                                    <input type="text" name="content" placeholder="Add Comment ...">
+                                    <input type="hidden" name="post"  value="<%= post._id %>">
+            <input type="submit" value="Comment">
+
+                            </form>
+                    </div>
+
                     
+                    <div class="post-comments-list">
+                        <ul id="post-comments-<%= post._id %>">
+                            <% for (comment of post.comments){%>
+                                
+                            <p>
+                                <%= comment.content %>
+                                <br>
+                                <small>
+                                    <%= comment.user.accountHolder %>
+                                </small>
+                            </p>    
+                            <%} %>
+                        </ul>
+                    </div>
                 </li>
                     
                 <%} %>
             </ul>
         </div>
-    
+    <% } %>
     </section>
