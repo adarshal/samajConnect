@@ -1,17 +1,25 @@
 <!-- <link rel="stylesheet" href="/css/users.css">  -->
 
 
-  
-        <h1>Codeial profile page</h1>
-        <div>
-                <p>
-               <h5> <%= user.accountHolder%>  
-                <%= user.email %>
-                <%= user.id %>
-                <%= user.password %>
-        </h5>
-                </p>
-        </div>
 
-    
-    
+<h1>Codeial profile page</h1>
+<div>
+        <% if(locals.user.id==profile_user.id ){%>
+                        <form action="/users/update/<%=profile_user.id %>"" method="POST">
+                                <label for="change_username" >change username</label>
+                                <input type="text" id="change_username" name="accountHolder" value="<%=profile_user.accountHolder%>" required>
+                                <label for="change_email" >change email</label>
+                                <input type="text" id="change_email" name="email" value="<%=profile_user.email%>" required>
+                                <input type="submit" value="Update">
+                        </form>
+                <% }else{ %>
+                        <h5>
+                                <p>  <%= profile_user.accountHolder%></p>
+                                <p> <%= profile_user.email %></p>
+                                  <p> <%= profile_user.id %></p>
+                                  <p> <%= profile_user.password %></p>
+                          </h5>
+                <% } %>
+        
+        
+</div>

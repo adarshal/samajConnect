@@ -3,7 +3,8 @@ const passport = require('passport');
 const router = express.Router()
 console.log('user Router loaded');
 const userController=require('../controllers/users_controller');
-router.get('/profile',passport.checkAuthenthication, userController.profile); // added middleware to check if user signed in to show profile
+router.get('/profile/:id',passport.checkAuthenthication, userController.profile); // added middleware to check if user signed in to show profile
+router.post('/update/:id',passport.checkAuthenthication, userController.update); // added middleware to check if user signed in to show profile
 
 
 router.get('/signup',userController.signup);
