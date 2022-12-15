@@ -6,30 +6,78 @@
     </title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-     <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-   
-    <%- style %>    
-    
-    <!-- to tell that body of file that uses this layout may contain style link add that here  -->
-       <!-- to include this stylesheet link and script link need to iuse <%- style %> & <% script %> in layout  -->
+    <!-- noty js & stylesheet  -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <%- style %>
+
+        <!-- to tell that body of file that uses this layout may contain style link add that here  -->
+        <!-- to include this stylesheet link and script link need to iuse <%- style %> & <% script %> in layout  -->
 </head>
 
 <body>
     <%- include('_header'); %>
-        
-        <main id="layout-main">
-        <%- body %>
-    </main>
-<div>
-    <%- include('_footer'); %>
-</div>
-           
-            
 
-            <%- script %> 
-    <!-- to tell that body of file that uses this layout may contain style link add that here  -->
+
+        <main id="layout-main">
+            <%- body %>
+        </main>
+        <div>
+            <%- include('_footer'); %>
+        </div>
+
+
+
+        <%- script %>
+            <!-- to tell that body of file that uses this layout may contain style link add that here  -->
+
+            <script>
+                <% if (flash.success && flash.success.length > 0) {%>
+                    // new Noty({
+                    //     theme: 'sunset',
+                    //     text: "<%= flash.success %>",
+                    //     type: 'success',
+                    //     layout: 'topRight',
+                    //     timeout: 1500
+                        
+                    // }).show();    
+                    // Create an instance of Notyf
+                     var notyf = new Notyf({
+                                    position: {
+                                    x: 'right',
+                                     y: 'top',
+                                    }
+                                        });
+                     
+                    // Display a success notification
+                 notyf.success('<%= flash.success %>');
+                <% } %>
+    
+                <% if (flash.error && flash.error.length > 0) {%>
+                    var notyf = new Notyf({
+                                    position: {
+                                    x: 'right',
+                                     y: 'top',
+                                    }
+                                        });
+                    notyf.error('<%= flash.error %>');
+
+            //         new Noty({
+            //             theme: 'relax',
+            //             text: "<%= flash.error %>",
+            //             type: 'error',
+            //             layout: 'topRight',
+            //             timeout: 1500
+                        
+            //         }).show();    
+                <%} %>
+            </script>
 </body>
 
 </html>

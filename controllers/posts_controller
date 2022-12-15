@@ -2,32 +2,41 @@ const Post = require('../models/post');
 const Comment = require('../models/comment');
 
 
-module.exports.create = function(req, res){
-    Post.create({
-        content: req.body.content,
-        user: req.user.id
-    } ,function(err,post){
-        if(err){
-            console.log('Error in posting post');
-            return;
-        }
+module.exports.create = async function(req, res){
+    try {
+        await Post.create({
+            content: req.body.content,
+            user: req.user.id
+        });
+        req.flash('success', 'Post created');
         return res.redirect('back');
-    })
+    } catch (err) {
+        req.flash('error', 'Error in creating post , try again');
+        return res.redirect('back');
+    }
+    
 }
 
 //delete post
-module.exports.destroy= function(req,res){
-        Post.findById(req.params.id, function(err,post){
-            if(post){
-                // .id means converting objid to string
-                if(post.user == req.user.id){
-                    post.remove();
-                    Comment.deleteMany({post: req.params.id}, function(err){
-                        return res.redirect('back');
-                    });
-                }else{
-                    return res.redirect('back');
-                }
-            }
-        })
+module.exports.destroy= async function(req,res){
+try {
+     let post=await Post.findById(req.params.id);
+    // .id means converting objid to string
+    if(post.user == req.user.id){
+        post.remove();
+        await Comment.deleteMany({post: req.params.id});
+        req.flash('success', 'Post deleted');
+            return res.redirect('back');
+        
+    }else{
+    req.flash('error', 'You cant delete this post ');
+        return res.redirect('back');
+    }
+} catch (err) {
+    req.flash('error', 'Error in deleting post ');
+    return res.redirect('back');
+
+}
+
+ 
 }

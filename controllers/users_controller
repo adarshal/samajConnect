@@ -36,6 +36,7 @@ module.exports.signin=function(req,res){
 
 module.exports.createAccount=function(req,res){
       if(req.body.password != req.body.confirmPassword){
+        req.flash('error', 'Password is not matching');
            return res.redirect('back');
         }
 
@@ -53,12 +54,13 @@ module.exports.createAccount=function(req,res){
                     // }
                 , function (err, newUser) {
                     if (err) {console.log('Error in creating User ', err); return;}
-                     
+      
+                    req.flash('success', 'Account created successfully');
                     return res.redirect('/users/signin');
                             })
 
             }else{
-                console.log('Error email id is already in use');
+                req.flash('error', 'Error! email id is already in use');
                 return res.redirect('back');
             }
         })
@@ -68,6 +70,7 @@ module.exports.createAccount=function(req,res){
 
 // signin Auth process creates session
 module.exports.loginCreateSession=function(req,res){
+    req.flash('success','login successfull')
     return res.redirect('/');
 }
 
@@ -78,6 +81,7 @@ module.exports.signout=function(req,res){
     // res.clearCookie('user_id'); // old manual method not used
     req.logout(function(err) { // function by passport
         if (err) { return next(err); }
+    req.flash('success','log out successfull')
         res.redirect('/');
     });
       }

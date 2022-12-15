@@ -13,6 +13,9 @@ const passport = require('passport');
 const passportLocal= require('./config/passport-local-stratergy');
 const MongoStore=require('connect-mongo')(session); //new mongostore dont require input session so downgraded from version 4 to 3
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const customMware= require('./config/middleware');
+
 
 //using layouts !! it should be before routes
 const expressLayout = require('express-ejs-layouts');
@@ -72,6 +75,9 @@ app.use(session(
 app.use(passport.initialize());
 app.use(passport.session()); // paspport also have session function
 app.use(passport.setAuthenticatedUser) // checks whether session cookies present
+app.use(flash()); //flash should be after session creation
+app.use(customMware.setFlash); 
+
 
 //uses router this router need to be used after passport so rotes can use paaport
 app.use('/', require('./routes')); // /router.index.js can also used bu ir directly fect index so used it
