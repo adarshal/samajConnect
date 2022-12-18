@@ -10,15 +10,18 @@ module.exports.create = async function(req, res){
         });
 
         if(req.xhr){ //to check if req send by ajax
+        
+                // req.flash('success', 'Post created')
+
             return res.status(200).json({
                 data:{
                     post: post,
+                    accountHolder: req.user.accountHolder
                 },
-                message: "Post created"
+                message:  req.flash('success', 'Post created'),
                 });
         }
 
-        req.flash('success', 'Post created');
         return res.redirect('back');
     } catch (err) {
         req.flash('error', 'Error in creating post , try again');
@@ -37,6 +40,8 @@ try {
         await Comment.deleteMany({post: req.params.id});
         
         if (req.xhr){
+        req.flash('success', 'Post deleted');
+
             return res.status(200).json({
                 data: {
                     post_id: req.params.id

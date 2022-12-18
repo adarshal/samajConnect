@@ -4,12 +4,17 @@
 
 <h1>Codeial profile page</h1>
 <div>
+        <img src="<%=user.avatar %>" alt="<%= profile_user.accountHolder%>" width="30">
         <% if(locals.user.id==profile_user.id ){%>
-                        <form action="/users/update/<%=profile_user.id %>"" method="POST">
+                        <form action="/users/update/<%=profile_user.id %>"" method="POST"  enctype="multipart/form-data"> 
+                                <!-- /* enc type from multer */ -->
                                 <label for="change_username" >change username</label>
                                 <input type="text" id="change_username" name="accountHolder" value="<%=profile_user.accountHolder%>" required>
                                 <label for="change_email" >change email</label>
                                 <input type="text" id="change_email" name="email" value="<%=profile_user.email%>" required>
+                                <br>
+                                <label for="avatar-file">Select avatar file</label>
+                                <input type="file" name="avatar" placeholder="profile picture" id="avatar-file"/>
                                 <input type="submit" value="Update">
                         </form>
                 <% }else{ %>

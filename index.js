@@ -27,7 +27,8 @@ app.set('layout extractScripts', true);
 
 // static files access 
 app.use(express.static('assets'));
-
+// make the uploads path available for browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
 
 app.use(sassMiddleware({
     src: './assets/scss',

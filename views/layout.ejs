@@ -41,6 +41,7 @@
             <!-- to tell that body of file that uses this layout may contain style link add that here  -->
 
             <script>
+                var notyfun=function(){
                 <% if (flash.success && flash.success.length > 0) {%>
                     // new Noty({
                     //     theme: 'sunset',
@@ -79,7 +80,9 @@
             //             timeout: 1500
                         
             //         }).show();    
-                <%} %>
+                <% } %>
+            }
+            notyfun();
             </script>
 </body>
 
