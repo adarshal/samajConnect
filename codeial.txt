@@ -53,4 +53,13 @@ app.use(expressLayout);
 
 ---
 
+20dec jwt installing passport stratergy-
+npm install passport-jwt. use it in main index
+then create jwt strategy
+
+then npm install jsonwebtoken- this use to create token then passport can decrypt token.
+then api folder users.js>const jwt =require('jsonwebtoken'); used
+
+
+
 
