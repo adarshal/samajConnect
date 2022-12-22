@@ -12,6 +12,7 @@ const session= require('express-session');
 const passport = require('passport');
 const passportLocal= require('./config/passport-local-stratergy');
 const passportJWT= require('./config/passport-jwt-stratergy');
+const passportGoogle= require('./config/passport-google-OAuth-stratergy');
 const MongoStore=require('connect-mongo')(session); //new mongostore dont require input session so downgraded from version 4 to 3
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');

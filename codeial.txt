@@ -61,5 +61,11 @@ then npm install jsonwebtoken- this use to create token then passport can decryp
 then api folder users.js>const jwt =require('jsonwebtoken'); used
 
 
+22dec-
+Auth using goole,.
+we will install new 'npm install passport-google-oauth ' stratergy .cretae startegy passport-gogle auth. use.
+
+
+
 
 

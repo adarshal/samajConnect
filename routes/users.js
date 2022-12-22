@@ -22,6 +22,13 @@ userController.loginCreateSession);
 
 router.get('/signout',userController.signout);
 
+router.get('/auth/google',passport.authenticate('google',{scope: ['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',
+    {failureRedirect: '/users/signin'}, // this'google' comes from main index.js passportGoogle
+),
+userController.loginCreateSession);
+
+    
 
 
 module.exports= router;
