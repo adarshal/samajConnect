@@ -1,6 +1,8 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
-
+const commentsMailer = require('../mailers/comments_mailer');
+// const queue = require('../config/kue');  //this & below lie use for kue with redis for queing/delaying jobs
+// const commentEmailWorker = require('../workers/comment_email_worker');
 
 module.exports.create = async function(req, res){
     try {
@@ -13,6 +15,19 @@ module.exports.create = async function(req, res){
         });
         post.comments.push(comment);
         post.save();
+        //sending mail if comment created
+        // comment = await comment.populate('user').execPopulate();// removed by moongoose
+        comment=await comment.populate([{path: 'user', select: 'accountHolder email'}]);
+           commentsMailer.newComment(comment);// currrently not used(but using instead of bellow code as redis not installed) as we will use kue to priority quese to schedule/delay jobs
+        // let job=queue.create('emails', comment).save(function(err){ //save as we need to save comment //'emails' is same as 'emails' passed in worker should be same
+        //     if (err){
+        //         console.log('Error in sending to the queue', err);
+        //         return;
+        //     }
+        //     console.log('job enqueued', job.id);
+        // })
+
+
         if(req.xhr){ //to check if req send by ajax
         
         return res.status(200).json({
@@ -23,8 +38,6 @@ module.exports.create = async function(req, res){
             message:  req.flash('success', 'Comment created'),
             });
     }
-
-
 
         req.flash('success', 'comment added');
          res.redirect('back');

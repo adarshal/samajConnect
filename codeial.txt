@@ -65,7 +65,12 @@ then api folder users.js>const jwt =require('jsonwebtoken'); used
 Auth using goole,.
 we will install new 'npm install passport-google-oauth ' stratergy .cretae startegy passport-gogle auth. use.
 
-
+24dec
+sending automa mailer
+using nodemailer
+gmail passwor> fypjitnptpckxude
+// next delayed jobs
+mpm install kue //it is for creating queue of jobs of diff priority. then redis installation
 
 
 

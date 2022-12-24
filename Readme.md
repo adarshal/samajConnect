@@ -5,3 +5,7 @@ Authenthication steps:
  create session (sign in) ✔ 
  show details of signed in user on profile page
  signout
+
+
+ nodemailer =>
+  install > config> mailers> template
