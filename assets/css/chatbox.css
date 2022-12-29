@@ -1,0 +1,89 @@
+/* /* section #chat{
+    position: relative;
+} */
+/* #chatbox{
+    height: 15rem; 
+    position: fixed; 
+    bottom:2%;
+    right: 1px;
+    width:15%; 
+    margin: 2%;
+    background-color: #9de12f; 
+    opacity: 1;
+}
+#chatbox li{
+    list-style: none;
+}
+#chatbox #chat-send-msg{
+position: absolute;
+bottom: 0%;
+}
+.chatbox-to-user{
+    position: relative;
+    background-color: chocolate;
+    width: 75%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    float: left;
+    left:-2rem;
+}
+.chatbox-from-user{
+    float: right;
+    background-color:darkgreen;
+    width: 75%;
+    padding: 0.2rem;
+    margin: 0.5rem;;
+}
+#chat-send-msg{
+    align-items: center;
+    text-align: center;
+}
+#chat-send-msg input{
+    display: inline-block;
+} */
+
+#user-chat-box {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border: 1px dashed grey;
+  height: 350px;
+  width: 300px;
+  background: #9de12f;
+  padding: 5px;
+  box-shadow: 1px 1px 1px 1px lightgrey; }
+  #user-chat-box #chat-messages-list {
+    list-style: none;
+    padding: 10px;
+    height: 70%;
+    background-color: #9de12f;
+    overflow: auto; }
+    #user-chat-box #chat-messages-list .other-message {
+      text-align: left;
+      padding: 5px; }
+      #user-chat-box #chat-messages-list .other-message span {
+        display: inline-block;
+        padding: 15px;
+        background-color: chocolate; }
+    #user-chat-box #chat-messages-list .self-message {
+      text-align: right;
+      padding: 5px; }
+      #user-chat-box #chat-messages-list .self-message span {
+        display: inline-block;
+        padding: 15px;
+        background-color: darkgreen; }
+  #user-chat-box #chat-message-input-container {
+    height: 24%;
+    width: 100%;
+    display: flex;
+    flex-direction: row; }
+    #user-chat-box #chat-message-input-container #chat-message-input {
+      height: 50%;
+      width: 70%; }
+    #user-chat-box #chat-message-input-container #send-message {
+      height: 50%;
+      width: 30%;
+      font-size: 25px;
+      color: white;
+      border: none;
+      background: #058405; }

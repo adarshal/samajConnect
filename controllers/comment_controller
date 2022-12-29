@@ -4,81 +4,85 @@ const commentsMailer = require('../mailers/comments_mailer');
 // const queue = require('../config/kue');  //this & below lie use for kue with redis for queing/delaying jobs
 // const commentEmailWorker = require('../workers/comment_email_worker');
 
-module.exports.create = async function(req, res){
+const Like = require('../models/like');
+
+module.exports.create = async function (req, res) {
     try {
-        let post= await Post.findById(req.body.post);
-        if(post){
-        let comment= await Comment.create({
-            content: req.body.content,
-            user: req.user._id,
-            post: req.body.post
-        });
-        post.comments.push(comment);
-        post.save();
-        //sending mail if comment created
-        // comment = await comment.populate('user').execPopulate();// removed by moongoose
-        comment=await comment.populate([{path: 'user', select: 'accountHolder email'}]);
-           commentsMailer.newComment(comment);// currrently not used(but using instead of bellow code as redis not installed) as we will use kue to priority quese to schedule/delay jobs
-        // let job=queue.create('emails', comment).save(function(err){ //save as we need to save comment //'emails' is same as 'emails' passed in worker should be same
-        //     if (err){
-        //         console.log('Error in sending to the queue', err);
-        //         return;
-        //     }
-        //     console.log('job enqueued', job.id);
-        // })
-
-
-        if(req.xhr){ //to check if req send by ajax
-        
-        return res.status(200).json({
-            data:{
-                comment: comment,
-                accountHolder: req.user.accountHolder
-            },
-            message:  req.flash('success', 'Comment created'),
+        let post = await Post.findById(req.body.post);
+        if (post) {
+            let comment = await Comment.create({
+                content: req.body.content,
+                user: req.user._id,
+                post: req.body.post
             });
-    }
+            post.comments.push(comment);
+            post.save();
+            //sending mail if comment created
+            // comment = await comment.populate('user').execPopulate();// removed by moongoose
+            comment = await comment.populate([{ path: 'user', select: 'accountHolder email' }]);
+            commentsMailer.newComment(comment);// currrently not used(but using instead of bellow code as redis not installed) as we will use kue to priority quese to schedule/delay jobs
+            // let job=queue.create('emails', comment).save(function(err){ //save as we need to save comment //'emails' is same as 'emails' passed in worker should be same
+            //     if (err){
+            //         console.log('Error in sending to the queue', err);
+            //         return;
+            //     }
+            //     console.log('job enqueued', job.id);
+            // })
 
-        req.flash('success', 'comment added');
-         res.redirect('back');
+
+            if (req.xhr) { //to check if req send by ajax
+
+                return res.status(200).json({
+                    data: {
+                        comment: comment,
+                        accountHolder: req.user.accountHolder
+                    },
+                    message: req.flash('success', 'Comment created'),
+                });
+            }
+
+            req.flash('success', 'comment added');
+            res.redirect('back');
         }
     } catch (err) {
-        req.flash('error', "error in deleting");
+        req.flash('error', "error in creating comment");
         res.redirect('back');
 
     }
-    
+
 
 }
 
 //delete comment
-module.exports.destroy= async function(req,res){
-   
-    try {
-        let comment =await Comment.findById(req.params.id);
-        if(comment){
-            if(comment.user == req.user.id){
-                    let postid=comment.post;
-                    comment.remove();
-        await Post.findByIdAndUpdate(postid,{$pull: {comments:req.params.id }});
-        if (req.xhr){
-            req.flash('success', 'Comment deleted');
-    
-                return res.status(200).json({
-                    data: {
-                        comment_id: req.params.id
-                    },
-                    message: "Comment deleted"
-                });
-            }
+module.exports.destroy = async function (req, res) {
 
-        req.flash('success', 'comment deleted');
-            return res.redirect('back');
-            }else{
-        req.flash('error', 'you cant delete this deleted');
-            return res.redirect('back');
+    try {
+        let comment = await Comment.findById(req.params.id);
+        if (comment) {
+            if (comment.user == req.user.id) {
+                let postid = comment.post;
+                await Like.deleteMany({ likeable: comment, onModel: 'Comment' })
+                comment.remove();
+
+                await Post.findByIdAndUpdate(postid, { $pull: { comments: req.params.id } });
+                if (req.xhr) {
+                    req.flash('success', 'Comment deleted');
+
+                    return res.status(200).json({
+                        data: {
+                            comment_id: req.params.id
+                        },
+                        message: "Comment deleted"
+                    });
+                }
+
+                req.flash('success', 'comment deleted');
+                return res.redirect('back');
+            } else {
+                req.flash('error', 'you cant delete this deleted');
+                return res.redirect('back');
+            }
         }
-    }
     } catch (err) {
         req.flash('error', err);
         return res.redirect('back');

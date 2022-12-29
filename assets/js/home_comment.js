@@ -38,7 +38,16 @@
                         <small>
                         ${accountHolder}
                         </small>
-                    
+                        
+                        <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
+                                    0 Likes
+                                </a>
+                            
+                            </small>
+
+            </small>
                             <small>
                                 <a class="delete-comment-button" href="/comments/destroy/${comment.id}">X Delete comment</a>
                             </small>
@@ -46,24 +55,24 @@
             </li>`)
     }
 
-// Method to delete post in DOM
+    // Method to delete post in DOM
 
-let deletePost = function (deleteLink) {
-    $(deleteLink).click(function (e) {
-        e.preventDefault();
+    let deletePost = function (deleteLink) {
+        $(deleteLink).click(function (e) {
+            e.preventDefault();
 
-        $.ajax({
-            type: 'get',
-            url: $(deleteLink).prop('href'),
-            success: function (data) {
-                $(`#comment-${data.data.comment_id}`).remove();
-            }, error: function (error) {
-                console.log(error.responseText);
-            }
+            $.ajax({
+                type: 'get',
+                url: $(deleteLink).prop('href'),
+                success: function (data) {
+                    $(`#comment-${data.data.comment_id}`).remove();
+                }, error: function (error) {
+                    console.log(error.responseText);
+                }
+            });
+
         });
-
-    });
-}
+    }
 
     createComment();
 }

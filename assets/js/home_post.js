@@ -15,8 +15,8 @@
                 success: function (data) {
                     // console.log(data); // show response 
                     let newAjaxPost = addPost(data.data.post, data.data.accountHolder); // as wecan see in console data(complete hash) has data field in which post data is there
-                        console.log(newAjaxPost);
-                    
+                    console.log(newAjaxPost);
+
                     $('#posts-list-container>ul').prepend(newAjaxPost);
                     $('#post-add-text').val('');
                     deletePost($(' .delete-post-button', newAjaxPost)); //del-post -button class inside newAjxPost also space before class name.to call delpost with link
@@ -34,19 +34,30 @@
 
     let addPost = function (post, accountHolder) {
         console.log(post, accountHolder);
-        
+
         return $(`<li id="post-${post._id}">
         <p>
             
-            <small>
-                <a class="delete-post-button"  href="/posts/destroy/${post._id}">X</a>
-            </small>
+        <small>
+                            
+        <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+            0 Likes
+        </a>
+    
+</small>
+
            
             ${post.content}
             <br>
             <small>
             ${accountHolder}
             </small>
+            <small>
+    <a href="/likes/togglelike/?id${ post._id }&type=Post" data-like="0" class="toggle-like-btn">
+         <i class="fa-regular fa-thumbs-up likes-symbol" ></i> 0
+    </a>
+    <br>
+</small>
         </p>
         <div class="post-comments">
             
@@ -88,4 +99,16 @@
     }
 
     createPost();
+
+    
+    // let togglelike = function () {
+    //     let newForm = $('#like-${post.id}');
+    //     newForm.submit(function (e) {
+    //         e.preventDefault();
+
+    //         let actionUrl = newForm.attr('action');
+    //             alert("gj");
+    //     } )
+    // }
+    // togglelike();
 }

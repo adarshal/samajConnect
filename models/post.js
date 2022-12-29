@@ -1,26 +1,38 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    content:{
+    content: {
         type: String,
         required: true
     },
-    user :{
+    user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User'
-            },
+    },
     // include the array of ids of all comments in this post schema itself
-  comments: [
-    {
-        type:  mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Like'
+        }
+    ],
+    Friendship: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Friendship'
     }
-] } ,
-  {
-    timestamps: true // to know when post was created when was updated
-  }
-  
-  );
+    ],
+},
+    {
+        timestamps: true // to know when post was created when was updated
+    }
 
-  const Post=mongoose.model('Post',PostSchema);
-module.exports =Post;
+);
+
+const Post = mongoose.model('Post', PostSchema);
+module.exports = Post;
