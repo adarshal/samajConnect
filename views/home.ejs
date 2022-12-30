@@ -26,22 +26,23 @@
     </section>
 
     <aside>
-    <section id="friend-list">
+  
+     <section id="friend-list">
         <h4>Friends</h4>
         <ul>
-            <% for(user of user_list){ %>
+            <% for(u of all_users){ %>
 
                 <li>
-                    <p><a href="/users/profile/<%=user.id %>">
-                            <%= user.accountHolder %>
+                    <p><a href="/users/profile/<%=u.id %>">
+                            <%= u.accountHolder %>
                         </a></p>
+                        
                 </li>
                 <%} %>
         </ul>
-    </section>
-    <section id="chat">
-        <%- include('_chatbox'); %>
-    </section>
+    </section> 
+    <%- include('_chatbox') -%>
+    
 </aside>
 </div>
 
