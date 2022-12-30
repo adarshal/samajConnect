@@ -7,16 +7,17 @@ class ChatEngine{
 
         if (this.userEmail){
             this.connectionHandler();
+         
         }
-
+            
     }
 
 
     connectionHandler(){
         let self = this;
-
         this.socket.on('connect', function(){
             console.log('connection established using sockets...!');
+            console.log('hi fff');
 
 
             self.socket.emit('join_room', {
@@ -41,6 +42,7 @@ class ChatEngine{
                     user_email: self.userEmail,
                     chatroom: 'codeial'
                 });
+                $('#chat-message-input').val('');
             }
         });
 

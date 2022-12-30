@@ -19,9 +19,9 @@ class ChatEngine{
             console.log('connection established using sockets...!');
 
 
-            self.socket.emit('join_room', { //instead of join_room you can give any name
+            self.socket.emit('join_room', {
                 user_email: self.userEmail,
-                chatroom: 'codeial'  //you can give any room like codeial chat room or any 
+                chatroom: 'codeial'
             });
 
             self.socket.on('user_joined', function(data){
@@ -31,23 +31,25 @@ class ChatEngine{
 
         });
 
+        // CHANGE :: send a message on clicking the send message button
         $('#send-message').click(function(){
-            let msg=$('chat-message-input').val();
-            if(msg !=''){
-                self.socket.emit('send_message',{
+            let msg = $('#chat-message-input').val();
+
+            if (msg != ''){
+                self.socket.emit('send_message', {
                     message: msg,
-                    user_email:self.userEmail,
-                    chatroom:'codeial',
-                })
-                $('chat-message-input').val('');
+                    user_email: self.userEmail,
+                    chatroom: 'codeial'
+                });
+                $('#chat-message-input').val('');
             }
-            
+        });
 
-        })
+        self.socket.on('receive_message', function(data){
+            console.log('message received', data.message);
 
-        self.socket.on('receive_message',function(data){
-            console.log('msg received',data.message);
-              let newMessage = $('<li>');
+
+            let newMessage = $('<li>');
 
             let messageType = 'other-message';
 
@@ -66,9 +68,6 @@ class ChatEngine{
             newMessage.addClass(messageType);
 
             $('#chat-messages-list').append(newMessage);
-
         })
     }
 }
-
- 
