@@ -1,0 +1,25 @@
+[0mGET / [36m304[0m 81.399 ms - -[0m
+[0mPOST /posts/create [32m200[0m 40.544 ms - 272[0m
+[0mPOST /likes/toggle/?id=63b1d9701d55784cb8a82344&type=Post [32m200[0m 24.824 ms - 58[0m
+[0mGET / [32m200[0m 59.458 ms - 16580[0m
+[0mGET / [32m200[0m 684.707 ms - 4934[0m
+[0mGET /favicon.ico [33m404[0m 18.324 ms - 150[0m
+[0mGET /users/signin [36m304[0m 122.166 ms - -[0m
+[0mPOST /users/signin-account [36m302[0m 354.549 ms - 46[0m
+[0mGET / [32m200[0m 94.210 ms - 18003[0m
+[0mGET / [32m200[0m 203.728 ms - 17190[0m
+::1 - - [02/Jan/2023:15:27:38 +0000] "GET / HTTP/1.1" 200 4224 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:40 +0000] "GET /users/signin HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:46 +0000] "POST /users/signin-account HTTP/1.1" 302 70 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:46 +0000] "GET /users/signin HTTP/1.1" 200 6623 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:20 +0000] "GET /users/signup HTTP/1.1" 304 - "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:42 +0000] "POST /users/create-account HTTP/1.1" 302 70 "http://localhost:8000/users/signup" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:42 +0000] "GET /users/signin HTTP/1.1" 200 6760 "http://localhost:8000/users/signup" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:54 +0000] "POST /users/signin-account HTTP/1.1" 302 46 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:54 +0000] "GET / HTTP/1.1" 200 6564 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:20:05 +0000] "POST /posts/create HTTP/1.1" 200 277 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:25:59 +0000] "GET / HTTP/1.1" 200 7934 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:26:07 +0000] "GET / HTTP/1.1" 200 7131 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:27:27 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+[0mGET / [32m200[0m 237.667 ms - 4934[0m
+[0mGET / [36m304[0m 109.260 ms - -[0m

@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+
+
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\codeial\\config\\passport-jwt-stratergy.js",
+            "env":{
+                "CODEIAL_JWT_SECRET":"w4dMwZTYDGRi4jDY2jYdli1LKvYaRcGx",
+                "CODEIAL_SESSION_COOKIE_KEY":"MKaZsyZd11CiivHBFabE0AzJbYEhfyxn",
+                "CODEIAL_GOOGLE_CLIENT_ID":"147970174162-l5deg81ijm67nbn3o8svdjjqgo6daeql.apps.googleusercontent.com",
+                "CODEIAL_GOOGLE_CLIENT_SECRET":"MDXt6EXlELmOlfBHrt5HTUJUz8Wc",
+                "CODEIAL_GOOGLLE_CALLBACKURL": "http://localhost:8000/users/auth/google/callback",
+                "CODEIAL_DB":"codeial_prod_db",
+                "CODEIAL_ASSETS_PATH":"assets",
+                "CODEIAL_SMTP_USER": "samajConnect@gmail.com",
+                "CODEIAL_SMTP_PASSWORD":"fypjitnptpckxude",
+                "CODEIAL_ENVIRORNMENT":"production"
+
+            }
+        }
+    ]
+}
