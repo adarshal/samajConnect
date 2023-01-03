@@ -61,7 +61,7 @@ const production={
     }
 }
 
-module.exports= development; //changed to below code ,change to dev>prod or revrse from process env
-// module.exports=eval(process.env.CODEIAL_ENVIRORNMENT)==undefined ? development:eval(process.env.CODEIAL_ENVIRORNMENT);
+//module.exports= development; //changed to below code ,change to dev>prod or revrse from process env
+ module.exports=eval(process.env.CODEIAL_ENVIRORNMENT)==undefined ? development:eval(process.env.CODEIAL_ENVIRORNMENT);
 // to run it in production mode change something in packeg.json
  // in env.js file you can use NODE_ENV(as used in packg.json) insted of process.env.CODEIAL_ENVIRORNMENT both works
