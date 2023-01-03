@@ -2,3 +2,4 @@ node_modules
 /config/nodemailer.js
 /config/nodemailer.js
 /config/passport-google-OAuth-stratergy.js
+/production-logs

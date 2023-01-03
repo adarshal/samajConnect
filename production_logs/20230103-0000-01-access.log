@@ -1,0 +1,72 @@
+[0mGET / [36m304[0m 81.399 ms - -[0m
+[0mPOST /posts/create [32m200[0m 40.544 ms - 272[0m
+[0mPOST /likes/toggle/?id=63b1d9701d55784cb8a82344&type=Post [32m200[0m 24.824 ms - 58[0m
+[0mGET / [32m200[0m 59.458 ms - 16580[0m
+[0mGET / [32m200[0m 684.707 ms - 4934[0m
+[0mGET /favicon.ico [33m404[0m 18.324 ms - 150[0m
+[0mGET /users/signin [36m304[0m 122.166 ms - -[0m
+[0mPOST /users/signin-account [36m302[0m 354.549 ms - 46[0m
+[0mGET / [32m200[0m 94.210 ms - 18003[0m
+[0mGET / [32m200[0m 203.728 ms - 17190[0m
+::1 - - [02/Jan/2023:15:27:38 +0000] "GET / HTTP/1.1" 200 4224 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:40 +0000] "GET /users/signin HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:46 +0000] "POST /users/signin-account HTTP/1.1" 302 70 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:15:27:46 +0000] "GET /users/signin HTTP/1.1" 200 6623 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:20 +0000] "GET /users/signup HTTP/1.1" 304 - "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:42 +0000] "POST /users/create-account HTTP/1.1" 302 70 "http://localhost:8000/users/signup" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:42 +0000] "GET /users/signin HTTP/1.1" 200 6760 "http://localhost:8000/users/signup" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:54 +0000] "POST /users/signin-account HTTP/1.1" 302 46 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:19:54 +0000] "GET / HTTP/1.1" 200 6564 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:20:05 +0000] "POST /posts/create HTTP/1.1" 200 277 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:25:59 +0000] "GET / HTTP/1.1" 200 7934 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:26:07 +0000] "GET / HTTP/1.1" 200 7131 "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+::1 - - [02/Jan/2023:17:27:27 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+[0mGET / [32m200[0m 237.667 ms - 4934[0m
+[0mGET / [36m304[0m 109.260 ms - -[0m
+[0mGET /css/layout.css [33m404[0m 55.190 ms - 153[0m
+[0mGET /css/footer.css [33m404[0m 50.813 ms - 153[0m
+[0mGET /css/home.css [33m404[0m 54.413 ms - 151[0m
+[0mGET /css/chatbox.css [33m404[0m 53.092 ms - 154[0m
+[0mGET /css/header.css [33m404[0m 82.958 ms - 153[0m
+[0mGET / [31m500[0m 166.369 ms - 1237[0m
+[0mGET / [31m500[0m 119.530 ms - 1517[0m
+[0mGET / [32m200[0m 343.942 ms - 4931[0m
+[0mGET /css/layout.css [33m404[0m 18.738 ms - 153[0m
+[0mGET /css/header.css [33m404[0m 42.310 ms - 153[0m
+[0mGET /css/chatbox.css [33m404[0m 33.651 ms - 154[0m
+[0mGET /js/home_comment.js [33m404[0m 43.302 ms - 157[0m
+[0mGET /css/footer.css [33m404[0m 47.221 ms - 153[0m
+[0mGET /css/home.css [33m404[0m 53.151 ms - 151[0m
+[0mGET /js/home_post.js [33m404[0m 7.747 ms - 154[0m
+[0mGET /js/toggle_likes.js [33m404[0m 8.979 ms - 157[0m
+[0mGET /js/chat_engine.js [33m404[0m 9.812 ms - 156[0m
+[0mGET / [36m304[0m 103.071 ms - -[0m
+[0mGET /css/layout.css [33m404[0m 10.421 ms - 153[0m
+[0mGET /css/header.css [33m404[0m 24.672 ms - 153[0m
+[0mGET /css/footer.css [33m404[0m 27.240 ms - 153[0m
+[0mGET /css/home.css [33m404[0m 40.005 ms - 151[0m
+[0mGET /css/chatbox.css [33m404[0m 28.753 ms - 154[0m
+[0mGET /js/home_post.js [33m404[0m 27.177 ms - 154[0m
+[0mGET /js/toggle_likes.js [33m404[0m 14.612 ms - 157[0m
+[0mGET /js/home_comment.js [33m404[0m 9.476 ms - 157[0m
+[0mGET /js/chat_engine.js [33m404[0m 6.024 ms - 156[0m
+[0mGET / [36m304[0m 245.128 ms - -[0m
+[0mGET /css/layout.css [33m404[0m 13.927 ms - 153[0m
+[0mGET /css/header.css [33m404[0m 18.706 ms - 153[0m
+[0mGET /css/chatbox.css [33m404[0m 33.130 ms - 154[0m
+[0mGET /css/home.css [33m404[0m 33.700 ms - 151[0m
+[0mGET /js/home_post.js [33m404[0m 35.558 ms - 154[0m
+[0mGET /css/footer.css [33m404[0m 100.222 ms - 153[0m
+[0mGET /js/home_comment.js [33m404[0m 14.239 ms - 157[0m
+[0mGET /js/toggle_likes.js [33m404[0m 13.332 ms - 157[0m
+[0mGET /js/chat_engine.js [33m404[0m 8.243 ms - 156[0m
+[0mGET / [36m304[0m 211.503 ms - -[0m
+[0mGET /css/layout.css [33m404[0m 26.765 ms - 153[0m
+[0mGET /css/header.css [33m404[0m 49.598 ms - 153[0m
+[0mGET /css/footer.css [33m404[0m 38.007 ms - 153[0m
+[0mGET /css/home.css [33m404[0m 47.691 ms - 151[0m
+[0mGET /js/home_comment.js [33m404[0m 73.329 ms - 157[0m
+[0mGET /css/chatbox.css [33m404[0m 82.099 ms - 154[0m
+[0mGET /js/home_post.js [33m404[0m 18.753 ms - 154[0m
+[0mGET /js/toggle_likes.js [33m404[0m 13.881 ms - 157[0m
+[0mGET /js/chat_engine.js [33m404[0m 19.596 ms - 156[0m

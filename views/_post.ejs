@@ -2,7 +2,7 @@
 <p>
     <% if (locals.user && locals.user.id == post.user.id){ %>
     <small>
-        <%= locals.user.email %>
+        <!-- <%= locals.user.email %> -->
         <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>" onclick="deletePost(`post-<%= post._id %>>a`)">X</a>
     </small>
     <% } %>
@@ -10,7 +10,7 @@
     <br>
     
     <small>
-        <%= post.user.accountHolder %>
+      By  <%= post.user.accountHolder %>
     </small>
     <!-- <small>
         <% if (locals.user) { %>
@@ -25,7 +25,7 @@
 <small>
     <% if (locals.user){ %>
         <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                <%= post.likes.length %> Likes
+                <%= post.likes.length %> <i class="fa-solid fa-thumbs-up likes-symbol" ></i>
         </a>
     <% }else{ %>
         <%= post.likes.length %> Likes

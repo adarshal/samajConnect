@@ -2,10 +2,12 @@ const passport = require('passport');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT=require('passport-jwt').ExtractJwt;
 const User = require('../models/users');
+const env=require('./environment') //as we moved secret to env , we need to change that in api fold also
+
 
 let opts = {
  jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
- secretOrKey : 'codeial'
+ secretOrKey : env.jwt_secret
 };
 
 passport.use(new JWTStrategy(opts, function(jwtpayload, done) {

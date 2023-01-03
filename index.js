@@ -1,8 +1,14 @@
 const express = require('express');
-const app = express();
-const port = 8000;
+const env = require('./config/environment');
+const logger = require('morgan');
 
-const cookieParser=require('cookie-parser');
+
+const cookieParser = require('cookie-parser');
+const app = express();
+require('./config/view-helpers')(app);
+// const port = process.env.PORT;
+const port =process.env.PORT || 8000;
+
 
 // connect to db
 const db=require('./config/mongoose');
@@ -17,6 +23,10 @@ const MongoStore=require('connect-mongo')(session); //new mongostore dont requir
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware= require('./config/middleware');
+
+const path=require('path');
+
+
 
 //socket.io 
 // const http = require('http');
@@ -36,20 +46,25 @@ app.use(expressLayout);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
+console.log('Here............',process.env.CODEIAL_ASSETS_PATH)
 // static files access 
-app.use(express.static('assets'));
+app.use(express.static('assets')); //removed insted using path from env file
+// app.use(express.static(env.asset_path));
 // make the uploads path available for browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
 
-app.use(sassMiddleware({
-    src: './assets/scss',
-     dest: './assets/css',
-     debug: true, // we want to show error on terminal /for prod turn this off
-     outputStyle: 'extended', //want sigle lines seperated
-     prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
- 
-}))
 
+console.log(env.morgan.mode,env.morgan.options)
+app.use(logger(env.morgan.mode, env.morgan.options));
+
+// app.use(sassMiddleware({
+//     src: path.join(__dirname,env.asset_path,'scss'),
+//      dest: path.join(__dirname,env.asset_path,'css'),
+//      debug: true, // we want to show error on terminal /for prod turn this off
+//      outputStyle: 'extended', //want sigle lines seperated
+//      prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+ 
+// }))
 
 app.use(express.urlencoded());  // need for parsing it is middleware
 app.use(cookieParser()); 
@@ -65,7 +80,7 @@ app.use(session(
     {
     name: 'codeial',
     //TODO change secret before deploy in prod
-    secret: 'keyboard cat',
+    secret: env.session_cookie_key,
     resave: false,
     saveUninitialized: true,
     cookie: { 
@@ -82,7 +97,6 @@ app.use(session(
         }
     )
 }));
-
 
 app.use(passport.initialize());
 app.use(passport.session()); // paspport also have session function

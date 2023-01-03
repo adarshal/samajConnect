@@ -72,5 +72,27 @@ gmail passwor> fypjitnptpckxude
 // next delayed jobs
 mpm install kue //it is for creating queue of jobs of diff priority. then redis installation
 
+--
+socket io chat engine
+--
+1jan
+createdconfig/environment file, added static files path there ,removed static file path from index added path from env.
+npm install morgan for log files
+npm i rotating-file-stream for huge log file to small files// used in env.js
+2jan-
+install gulp . see wesited to install gulp and related files.make file gulffile.js
+used cmds>npm install --global gulp-cli
+>npm install --save-dev gulp
+npm i gulp-sass //convert saas to css
+install gulp-cssnano //compress css in one line
+install gulp-rev//renames file .so every time css file name will diff so browser will use new css file
+pipe is which calls gulp midlewares
+after creating gulpfile.create public folder for assets .
+run cmd gulp css
+
+installl various file .see gulpfile.js reqire statements.need to downgrade some npm files like del css.
+created view-hlper in config. to give file path when prod when in dev for asstes [path.caled from index js below app.
+
+
 
 
