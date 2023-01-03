@@ -25,9 +25,9 @@ login/signin/starting session
 signup/create account
 <img src="https://user-images.githubusercontent.com/89533221/210455248-78dae878-a83e-4a38-bc27-4080df8fe92b.JPG" width="250" height="300">
 <br>
-![snap](https://user-images.githubusercontent.com/89533221/210455251-1c6ae3e6-1f24-423e-872d-6cb5d54313a8.JPG)
+<img src="https://user-images.githubusercontent.com/89533221/210455251-1c6ae3e6-1f24-423e-872d-6cb5d54313a8.JPG")
 Chatting
-![whole page](https://user-images.githubusercontent.com/89533221/210455255-01ea4697-9b54-41f5-b5cb-1387f378383a.JPG)
+<img src="https://user-images.githubusercontent.com/89533221/210455255-01ea4697-9b54-41f5-b5cb-1387f378383a.JPG")
 
 Comments
-![with comment](https://user-images.githubusercontent.com/89533221/210455261-578b3071-acd1-4f8d-a3fa-0c2d547af910.JPG)
+<img src="https://user-images.githubusercontent.com/89533221/210455261-578b3071-acd1-4f8d-a3fa-0c2d547af910.JPG")
