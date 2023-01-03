@@ -6,7 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
 require('./config/view-helpers')(app);
-const port = 8001;
+const port = process.env.PORT;
 
 
 // connect to db
@@ -33,7 +33,7 @@ const path=require('path');
 // setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5001);
+chatServer.listen(5000);
 console.log('chat server is listening on port 5000');
 
 
