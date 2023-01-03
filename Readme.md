@@ -1,11 +1,19 @@
 
+social media using nodejs,express,mongoDB. Social media where you can post,comment like. (Ajax without refreshing page),connect chat with users.
+Profile editing options (change profile pic ,change password)
 
-Authenthication steps:
- Create User(sign up)-✔ 
- create session (sign in) ✔ 
- show details of signed in user on profile page
- signout
+Functionality:-
+Post,like,comment( used Ajax without refreshing page),connect chat with users.
+Profile editing options (change profile pic ,change password)
 
+MVP structure,manual authenthication(created middleware), passport auth (signin using email,or google signin, signup),
+API to login Using JWT,create session ,delete posts.Use of SCSS
+send mail to user based on comments,running parallel jobs, run jobs based on priority using Kue with redis,
+minifying css ,js using gulp, manifesting css js files name ,
+production logs using rfs, chat engine using socket.io,
 
- nodemailer =>
-  install > config> mailers> template
+deployement :
+using AWS ubuntu machine installed required things,some modifications, gone live using public ip and port,
+ran server using pm2,Used nginx proxy server 
+update inbound secrurity rules from aws ,connected domain name, Live on http://3.112.234.159:80
+and on domain (i no longer maintain the domain name)
