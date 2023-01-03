@@ -18,10 +18,10 @@ ran server using pm2,Used nginx proxy server
 update inbound secrurity rules from aws ,connected domain name, Live on http://3.112.234.159:80
 and on domain (i no longer maintain the domain name)
 login/signin/starting session
-![signin](https://user-images.githubusercontent.com/89533221/210455244-7f2dfe18-21c3-42e8-b83a-b9eafaf9909c.JPG)
+![signin](https://user-images.githubusercontent.com/89533221/210455244-7f2dfe18-21c3-42e8-b83a-b9eafaf9909c.JPG =250x250)
 
 signup/create account
-![signup](https://user-images.githubusercontent.com/89533221/210455248-78dae878-a83e-4a38-bc27-4080df8fe92b.JPG)
+![signup](https://user-images.githubusercontent.com/89533221/210455248-78dae878-a83e-4a38-bc27-4080df8fe92b.JPG =250x250)
 
 ![snap](https://user-images.githubusercontent.com/89533221/210455251-1c6ae3e6-1f24-423e-872d-6cb5d54313a8.JPG)
 Chatting
