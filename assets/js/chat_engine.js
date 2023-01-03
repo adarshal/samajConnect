@@ -1,9 +1,10 @@
 class ChatEngine{
-    constructor(chatBoxId, userEmail){
+    constructor(chatBoxId, userEmail,userAccountHolder){
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
-
-        this.socket = io.connect('http://3.112.234.159:8001');
+        this.userAccountHolder=userAccountHolder;
+        // this.socket = io.connect('http://3.112.234.159:8001');
+        this.socket = io.connect('http://localhost:5000');
 
         if (this.userEmail){
             this.connectionHandler();
@@ -22,7 +23,8 @@ class ChatEngine{
 
             self.socket.emit('join_room', {
                 user_email: self.userEmail,
-                chatroom: 'codeial'
+                chatroom: 'codeial',
+                user_accountHolder: self.userAccountHolder
             });
 
             self.socket.on('user_joined', function(data){
@@ -40,7 +42,8 @@ class ChatEngine{
                 self.socket.emit('send_message', {
                     message: msg,
                     user_email: self.userEmail,
-                    chatroom: 'codeial'
+                    chatroom: 'codeial',
+                    user_accountHolder: self.userAccountHolder
                 });
                 $('#chat-message-input').val('');
             }
@@ -62,10 +65,15 @@ class ChatEngine{
                 'html': data.message
             }));
 
+            // newMessage.append($('<sub>', {
+            //     'html': data.user_email
+            // })); // currently onhold only showing name
             newMessage.append($('<sub>', {
-                'html': data.user_email
+                'html': '&nbsp By-: &nbsp'
             }));
-
+            newMessage.append($('<sub>', {
+                'html': data.user_accountHolder
+            }));
             newMessage.addClass(messageType);
 
             $('#chat-messages-list').append(newMessage);

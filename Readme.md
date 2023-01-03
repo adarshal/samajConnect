@@ -9,3 +9,5 @@ Authenthication steps:
 
  nodemailer =>
   install > config> mailers> template
+
+  image.png

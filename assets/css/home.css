@@ -5,4 +5,41 @@ aside {
   position: relative;
   /* width: 40%; */
   left: 60%;
-  border-left: 2px solid grey; }
+  border-left: 2px solid grey; 
+}
+#feed-posts{
+margin: auto;
+}
+#feed-posts li{
+  list-style: none;
+}
+input {
+  border-radius: 2rem;
+  height: 2rem;
+  width: 30vw;
+}
+input[type=submit]{
+  width:7vw;
+  background-color: #91D8E4;
+}
+#new-post-form{
+  position: relative;
+  left: 3rem;
+}
+#new-post-form textarea{
+  border-radius: 5px;;
+}
+#new-post-form input{
+  display: block;
+  margin:5px;
+}
+
+#posts-list-container li{
+background-color: #20b99d;
+padding :0.3rem;
+margin: 5px;
+border-radius: 1rem;;
+}
+#post-comments-list li{ 
+background-color: #71C9CE;
+}

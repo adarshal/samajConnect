@@ -6,7 +6,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
 require('./config/view-helpers')(app);
-const port = process.env.PORT;
+// const port = process.env.PORT;
+const port =process.env.PORT || 8000;
 
 
 // connect to db
@@ -47,8 +48,8 @@ app.set('layout extractScripts', true);
 
 console.log('Here............',process.env.CODEIAL_ASSETS_PATH)
 // static files access 
-// app.use(express.static('assets')); //removed insted using path from env file
-app.use(express.static(env.asset_path));
+app.use(express.static('assets')); //removed insted using path from env file
+// app.use(express.static(env.asset_path));
 // make the uploads path available for browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
 
