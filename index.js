@@ -1,8 +1,13 @@
 const express = require('express');
+const env = require('./config/environment');
+const logger = require('morgan');
+
+
+const cookieParser = require('cookie-parser');
 const app = express();
+require('./config/view-helpers')(app);
 const port = 8000;
 
-const cookieParser=require('cookie-parser');
 
 // connect to db
 const db=require('./config/mongoose');
@@ -17,9 +22,8 @@ const MongoStore=require('connect-mongo')(session); //new mongostore dont requir
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware= require('./config/middleware');
-const env=require('./config/environment')
+
 const path=require('path');
-const logger= require('morgan')
 
 
 
@@ -60,7 +64,6 @@ app.use(logger(env.morgan.mode, env.morgan.options));
 //      prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
  
 // }))
-
 
 app.use(express.urlencoded());  // need for parsing it is middleware
 app.use(cookieParser()); 

@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = (app) => {
+    console.log('orside vie hlper **************');
     app.locals.assetPath = function(filePath){
+        
+        console.log('inside vie hlper **************');
         if (env.name == 'development'){
             return filePath;
         }

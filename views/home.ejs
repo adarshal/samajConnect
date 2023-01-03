@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chatbox.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
+<link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 
 <h1>Codeial Home page</h1>
 <div id="home-container">
@@ -48,11 +48,14 @@
 
 
 <!-- importing this script for creating the comments -->
-<script src="/js/home_comment.js" ></script>
-<script src="/js/home_post.js"></script>
+<!-- <script src="/js/home_comment.js" ></script> //changed to assetpath
+<script src="/js/home_post.js"></script> -->
+<script src="<%= assetPath('js/home_comment.js') %>" ></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
 
 <!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
-<script src="js/toggle_likes.js"></script>
+<!-- <script src="js/toggle_likes.js"></script>  // chnge to asset assetPath -->
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 <script>
     $('.toggle-like-button').each(function(){
         let self = this;
@@ -63,7 +66,8 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha512-59oxERSDGj1eMzmFW3acSaBHEMNi2GaeQC7nQYcTqM0vgcnavi4BpUhLkcJQE2G6fdtn8JVj7brt0EZuBV0ogQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="/js/chat_engine.js"></script>
+<!-- <script src="/js/chat_engine.js"></script> -->
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
 <% if (locals.user){ %>
     <script>
         new ChatEngine('user-chat-box', '<%= locals.user.email %>')

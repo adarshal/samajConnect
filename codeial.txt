@@ -90,6 +90,9 @@ pipe is which calls gulp midlewares
 after creating gulpfile.create public folder for assets .
 run cmd gulp css
 
-installl various file .see gulpfile.js reqire statements.need to downgrade some npm files like del css
+installl various file .see gulpfile.js reqire statements.need to downgrade some npm files like del css.
+created view-hlper in config. to give file path when prod when in dev for asstes [path.caled from index js below app.
+
+
 
 
