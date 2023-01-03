@@ -30,4 +30,4 @@ Chatting
 <img src="https://user-images.githubusercontent.com/89533221/210455255-01ea4697-9b54-41f5-b5cb-1387f378383a.JPG")>
 
 Comments
-<img src="https://user-images.githubusercontent.com/89533221/210455261-578b3071-acd1-4f8d-a3fa-0c2d547af910.JPG")>
+<img src="https://user-images.githubusercontent.com/89533221/210455261-578b3071-acd1-4f8d-a3fa-0c2d547af910.JPG)">
