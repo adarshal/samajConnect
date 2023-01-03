@@ -1,4 +1,4 @@
-
+To use it in terminal do-> npm install .Then npm start
 social media using nodejs,express,mongoDB. Social media where you can post,comment like. (Ajax without refreshing page),connect chat with users.
 Profile editing options (change profile pic ,change password)
 
